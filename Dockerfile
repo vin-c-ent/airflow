@@ -1,5 +1,6 @@
 FROM apache/airflow:2.7.0
 
+# Install package via apt-get (has to be root mode)
 USER root
 
 RUN apt-get update \
@@ -11,9 +12,14 @@ RUN apt-get update \
 
 USER airflow
 
+# Adding new PyPI packages individually
 COPY requirements.txt /
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -r /requirements.txt
 
+# Copy Dags
+COPY --chown=airflow:root dags/test_dag.py /opt/airflow/dags
+
+# Copy startup script
 COPY --chown=airflow:root startup.sh /opt/airflow
 
 ENTRYPOINT /opt/airflow/startup.sh
