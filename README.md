@@ -9,7 +9,7 @@ docker image build -t vincen/airflow:2.7.0 .
 # Run the container
 
 ```
-docker run -it -p 2222:8080 vincen/airflow:2.7.0
+docker run --name vincent_airflow -it -p 2222:8080 vincent/airflow:2.7.0
 ```
 
 # How to use
