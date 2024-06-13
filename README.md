@@ -3,7 +3,7 @@
 cd to the project folder
 
 ```
-docker image build -t vincen/airflow:2.7.0 .
+docker image build -t vincent/airflow:2.7.0 .
 ```
 
 # Run the container
@@ -12,9 +12,15 @@ docker image build -t vincen/airflow:2.7.0 .
 docker run --name vincent_airflow -it -p 2222:8080 vincent/airflow:2.7.0
 ```
 
-# How to use
+# How to test in local
 1. visit http://localhost:2222/home
 2. login with vincent/vincent
+
+# Archive the image, to be reused in NAS
+
+```
+docker image save -o vincent_airflow.tar vincent/airflow:2.7.0
+```
 
 
 # Remark
